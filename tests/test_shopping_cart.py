@@ -1,5 +1,5 @@
 from pages.inventoriy_page import InventoryPage
-from pages.login_page import LoginPage
+from pages.cart_page import CartPage
 from playwright.sync_api import Page, expect
 
 def test_add_items_to_cart(logged_in_page: Page):
@@ -35,11 +35,32 @@ def test_open_shopping_cart_page(logged_in_page: Page):
     checkout_button = page.get_by_role('button', name='Checkout')
     expect(checkout_button).to_be_visible()
 
-def test_open_hamburger_menu(logged_in_page: Page):
+# def test_open_hamburger_menu(logged_in_page: Page):
+#     page = logged_in_page
+#     inventory = InventoryPage(page)
+#     inventory.open_hamburger_menu()
+#     logout_button = logout_button = page.get_by_role('link', name='Logout')
+#     expect(logout_button).to_be_visible()
+
+def test_remove_all_items_from_the_cart_page(logged_in_page: Page):
     page = logged_in_page
     inventory = InventoryPage(page)
-    inventory.open_hamburger_menu()
-    logout_button = logout_button = page.get_by_role('link', name='Logout')
-    expect(logout_button).to_be_visible()
+    inventory.add_all_items_to_the_cart()
+    inventory.open_shopping_cart_page()
+    cart_page = CartPage(page)
+    cart_page.remove_all_from_cart_page()
+    shopping_cart_badge = page.locator('span[data-test="shopping-cart-badge"]')
+    assert shopping_cart_badge.is_hidden()
+
+def test_remove_two_items_from_the_cart_page(logged_in_page: Page):
+    page = logged_in_page
+    inventory = InventoryPage(page)
+    inventory.add_all_items_to_the_cart()
+    inventory.open_shopping_cart_page()
+    cart_page = CartPage(page)
+    cart_page.remove_two_items_from_cart_page()
+    shopping_cart_badge = page.locator('span[data-test="shopping-cart-badge"]')
+    expect(shopping_cart_badge).to_have_text('4')
+
 
 
