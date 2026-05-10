@@ -62,5 +62,26 @@ def test_remove_two_items_from_the_cart_page(logged_in_page: Page):
     shopping_cart_badge = page.locator('span[data-test="shopping-cart-badge"]')
     expect(shopping_cart_badge).to_have_text('4')
 
+def test_continue_shopping_button(logged_in_page: Page):
+    page = logged_in_page
+    inventory = InventoryPage(page)
+    inventory.add_all_items_to_the_cart()
+    inventory.open_shopping_cart_page()
+    cart_page = CartPage(page)
+    cart_page.continue_shopping()
+    title = page.locator('span[data-test="title"]')
+    expect(title).to_have_text('Products')
+
+def test_go_to_checkout_page(logged_in_page: Page):
+    page = logged_in_page
+    inventory = InventoryPage(page)
+    inventory.add_all_items_to_the_cart()
+    inventory.open_shopping_cart_page()
+    cart_page = CartPage(page)
+    cart_page.go_to_the_checkout_page()
+    checkout_page_title = page.locator('span[data-test="title"]')
+    expect(checkout_page_title).to_have_text('Checkout: Your Information')
+
+
 
 
