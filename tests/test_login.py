@@ -28,3 +28,9 @@ def test_login_without_credentials(page: Page):
     error = page.get_by_text('Epic sadface: Username is required')
     assert error.is_visible()
 
+def test_fake_credentials(page: Page):
+    login_page = LoginPage(page)
+    page.goto('https://www.saucedemo.com')
+    login_page.login('notsupporteduser', '123pass')
+    error = page.get_by_text('Epic sadface: Username and password do not match any user in this service')
+    assert error.is_visible()
