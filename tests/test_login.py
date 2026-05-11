@@ -6,6 +6,7 @@ def test_successful_login(page: Page):
     page.goto('https://www.saucedemo.com')
     login_page.login('standard_user', 'secret_sauce')
     expect(page).to_have_title('Swag Labs')
+    expect(page).to_have_url('https://www.saucedemo.com/inventory.html')
 
 def test_login_without_username(page: Page):
     login_page = LoginPage(page)

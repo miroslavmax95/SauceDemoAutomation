@@ -3,7 +3,7 @@ from playwright.sync_api import Page
 class InventoryPage:
 
     def __init__(self, page: Page):
-        self.page = Page
+        self.page = page
                             #Hamburger menu + options
         self.hamburger_menu = page.get_by_role('button', name='Open menu')
         self.logout_button = page.get_by_role('link', name='Logout')
@@ -53,7 +53,7 @@ class InventoryPage:
         self.shopping_cart_page_button.click()
 
     def open_hamburger_menu(self):
-        self.open_hamburger_menu().click()
+        self.hamburger_menu.click()
 
 
 
