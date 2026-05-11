@@ -1,9 +1,5 @@
-# This is an automation testing suite for SauceDemo test app, built
-# using Python, Playwright and pytest. 
-
-# The main goal is to create a simple
-# regression testing suite that will cover all main sections of the
-# application.
+This is an automation testing suite for SauceDemo test app, built using Python, Playwright and pytest. 
+The main goal is to create a simple regression testing suite that will cover all main sections of the application.
 
 Tech stack:
 - Python 3.12
