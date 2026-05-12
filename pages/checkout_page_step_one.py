@@ -9,6 +9,9 @@ class CheckoutPageOne:
         self.zip_number_field = page.get_by_placeholder('Zip/Postal Code')
         self.cancel_button = page.get_by_role('button', name='Cancel')
         self.continue_button = page.get_by_role('button', name='Continue')
+        self.first_name_error = page.get_by_text('Error: First Name is required')
+        self.last_name_error = page.get_by_text('Error: Last Name is required')
+        self.zip_number_error = page.get_by_text('Error: Postal Code is required')
 
 
     def fill_in_first_name(self, name: str):
@@ -17,7 +20,7 @@ class CheckoutPageOne:
     def fill_in_last_name(self,last_name: str):
         self.last_name_field.fill(last_name)
 
-    def fill_in_zip_nuber(self, zip_no: str):
+    def fill_in_zip_number(self, zip_no: str):
         self.zip_number_field.fill(zip_no)
 
     def fill_all_data(self, name: str, last_name: str, zip_no: str):
