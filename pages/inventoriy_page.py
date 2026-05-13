@@ -7,6 +7,7 @@ class InventoryPage:
                             #Hamburger menu + options
         self.hamburger_menu = page.get_by_role('button', name='Open menu')
         self.logout_button = page.get_by_role('link', name='Logout')
+        self.shopping_cart_badge = page.locator('span[data-test="shopping-cart-badge"]')
                             #Add to basket buttons for each product
         self.add_backpack_button = page.locator('button[name="add-to-cart-sauce-labs-backpack"]')
         self.add_bike_light_button = page.locator('button[data-test="add-to-cart-sauce-labs-bike-light"]')
