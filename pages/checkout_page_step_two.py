@@ -4,7 +4,7 @@ class CheckoutPageTwo:
 
     def __init__(self, page: Page):
         self.page = page
-        self.payment_information = page.locator('div[data-test="payment-info-label"]')
+        self.payment_information = page.locator('div[data-test="payment-info-value"]')
         self.shipping_information = page.locator('div[data-test="shipping-info-value"]')
         self.total_value = page.locator('div[data-test="total-label"]')
         self.cancel_button = page.get_by_role('button', name='Cancel')
