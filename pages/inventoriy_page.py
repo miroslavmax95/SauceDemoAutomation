@@ -4,18 +4,16 @@ class InventoryPage:
 
     def __init__(self, page: Page):
         self.page = page
-                            #Hamburger menu + options
+        self.title = page.locator('span[data-test="title"]')
         self.hamburger_menu = page.get_by_role('button', name='Open menu')
         self.logout_button = page.get_by_role('link', name='Logout')
         self.shopping_cart_badge = page.locator('span[data-test="shopping-cart-badge"]')
-                            #Add to basket buttons for each product
-        self.add_backpack_button = page.locator('button[name="add-to-cart-sauce-labs-backpack"]')
+        self.add_backpack_button = page.locator('button[data-test="add-to-cart-sauce-labs-backpack"]')
         self.add_bike_light_button = page.locator('button[data-test="add-to-cart-sauce-labs-bike-light"]')
         self.add_tshirt = page.locator('button[data-test="add-to-cart-sauce-labs-bolt-t-shirt"]')
         self.add_jacket = page.locator('button[data-test="add-to-cart-sauce-labs-fleece-jacket"]')
         self.add_onesie = page.locator('button[data-test="add-to-cart-sauce-labs-onesie"]')
         self.add_redshirt = page.locator('button[data-test="add-to-cart-test.allthethings()-t-shirt-(red)"]')
-                            #Remove from basket button for each product
         self.remove_backpack_button = page.locator('button[data-test="remove-sauce-labs-backpack"]')
         self.remove_bike_light_button = page.locator('button[data-test="remove-sauce-labs-bike-light"]')
         self.remove_tshirt_button = page.locator('button[data-test="remove-sauce-labs-bolt-t-shirt"]')

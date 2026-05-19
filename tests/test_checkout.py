@@ -98,6 +98,7 @@ def test_full_checkout_flow_all_items_added(logged_in_page: Page):
     step_two.finish_checkout()
     checkout_completed = CheckoutComplete(page)
     expect(checkout_completed.checkout_complete_message).to_be_visible()
+    expect(page).to_have_url('https://www.saucedemo.com/checkout-complete.html')
 
 
 def test_full_checkout_flow_with_3_items_added(logged_in_page: Page):
