@@ -60,6 +60,33 @@ def test_continue_shopping_button(logged_in_page: Page):
     cart_page.continue_shopping()
     expect(inventory.title).to_have_text('Products')
 
+def open_hamburger_menu(logged_in_page: Page):
+    page = logged_in_page
+    inventory = InventoryPage(page)
+    inventory.open_hamburger_menu()
+    expect(inventory.hamburger_all_items_option).to_be_visible()
+
+def go_to_inventory_page_via_hamburger_menu(logged_in_page: Page):
+    page = logged_in_page
+    inventory= InventoryPage(page)
+    inventory.open_shopping_cart_page()
+    expect(page).to_have_url('https://www.saucedemo.com/cart.html')
+    inventory.hamburger_inventory_page()
+    expect(page).to_have_url('https://www.saucedemo.com/inventory.html')
+
+def go_to_about_page_via_hamburger_menu(logged_in_page: Page):
+    page = logged_in_page
+    inventory = InventoryPage(page)
+    inventory.hamburger_about_page()
+    expect(page).to_have_url('https://saucelabs.com/')
+
+def logout_via_hamburger_menu(logged_in_page: Page):
+    page = logged_in_page
+    inventory = InventoryPage(page)
+    inventory.hamburger_logout()
+    expect(page).to_have_url('https://www.saucedemo.com/')
+
+
 
 
 

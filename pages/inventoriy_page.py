@@ -5,7 +5,6 @@ class InventoryPage:
     def __init__(self, page: Page):
         self.page = page
         self.title = page.locator('span[data-test="title"]')
-        self.hamburger_menu = page.get_by_role('button', name='Open menu')
         self.logout_button = page.get_by_role('link', name='Logout')
         self.shopping_cart_badge = page.locator('span[data-test="shopping-cart-badge"]')
         self.add_backpack_button = page.locator('button[data-test="add-to-cart-sauce-labs-backpack"]')
@@ -21,6 +20,10 @@ class InventoryPage:
         self.remove_onesie_button = page.locator('button[data-test="remove-sauce-labs-onesie"]')
         self.remove_redshirt_button = page.locator('button[data-test="remove-test.allthethings()-t-shirt-(red)"]')
         self.shopping_cart_page_button = page.locator('a[data-test="shopping-cart-link"]')
+        self.hamburger_menu = page.get_by_role('button', name='Open menu')
+        self.hamburger_all_items_option = page.locator('a[data-test="inventory-sidebar-link"]')
+        self.hamburger_about_option = page.locator('a[data-test="about-sidebar-link"]')
+        self.hamburger_logout_option = page.locator('a[data-test="logout-sidebar-link"]')
 
     def add_all_items_to_the_cart(self):
         self.add_backpack_button.click()
@@ -53,6 +56,18 @@ class InventoryPage:
 
     def open_hamburger_menu(self):
         self.hamburger_menu.click()
+
+    def hamburger_inventory_page(self):
+        self.hamburger_menu.click()
+        self.hamburger_all_items_option.click()
+
+    def hamburger_about_page(self):
+        self.hamburger_menu.click()
+        self.hamburger_about_option.click()
+
+    def hamburger_logout(self):
+        self.hamburger_menu.click()
+        self.hamburger_logout_option.click()
 
 
 

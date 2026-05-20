@@ -14,8 +14,6 @@ class LoginPage:
         self.locked_out_user_error = page.get_by_text('Epic sadface: Sorry, this user has been locked out.')
 
 
-
-
     def login(self, email: str, password: str):
         self.username_field.fill(email)
         self.password_field.fill(password)

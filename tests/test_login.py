@@ -20,7 +20,6 @@ def test_login_without_password(page: Page):
     login_page.login('standard_user', '')
     expect(login_page.password_required_error).to_be_visible()
 
-
 def test_login_without_credentials(page: Page):
     login_page = LoginPage(page)
     page.goto('https://www.saucedemo.com')
